@@ -55,3 +55,12 @@ You will follow either of the way listed below to interact with AI systems:
 2. *Augmentation* - You and AI work together to a get a task done. Example - Brainstorm to understand domain. Another can be to work together to build a tool.
 
 3. *Agency* - AI works as an independent unit without you and on your behalf.
+
+## 4D Framework
+
+1. **Delegation**
+    - Thoughtfully deciding what work to do with AI vs. doing yourself
+    - Understand the problem - *Goals*, outcomes and how the success looks like
+    - You should know the *capacity* and *limitation* of the AI system
+    - Decide what AI does well and what it cannot
+    - Divide the tasks between *Yourself* and *AI*
