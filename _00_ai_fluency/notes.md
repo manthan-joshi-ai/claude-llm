@@ -83,3 +83,25 @@ You will follow either of the way listed below to interact with AI systems:
     - Measure accuracy of the output
     - Take the ownership and responsibility of the AI work
     - Ethical use and transparency
+
+
+## Exercise 1: Apply the 4D's
+
+> Pick one of these collaboration scenarios and consider how you might apply the 4D Framework.
+
+**Scenario used:** Control-M batch monitoring tool (support team job monitoring + on-demand re-run tied to
+a ticket, dev team filtered sanity-check view, full audit trail) — a real project, used instead of the
+course's Communication/Research/Creative options.
+
+| D | Answer |
+|---|---|
+| **Delegation** | Judgment work — HLD/LLD design, test strategy/guardrails, user sign-off — stays human. Coding implementation, and validating it against the pre-defined tests, goes to AI. |
+| **Description** | Brief AI with the design docs (HLD/LLD), Control-M API/swagger doc, and test-strategy doc, plus a clear role and workflow context — so "what," "how," and "how good" are all covered by real documents, not just prose. |
+| **Discernment** | Layered trust: does it pass the (human-defined) test suite → does it run cleanly in UAT → does a human review round confirm all features behave as expected. |
+| **Diligence** | Log decisions/assumptions made during build (traceable to HLD/LLD) for root-cause tracing later. Runtime risk is low because the shipped tool is deterministic/rule-based, not an AI making live judgment calls — so the audit table fully accounts for every action once deployed. |
+
+**Review:** Strong, self-consistent answer set — each D reinforces the others (e.g. Discernment's "passes
+the tests" only works because Delegation kept test-authorship human, not AI-graded); sharpest insight was
+separating *build-time* AI uncertainty from *runtime* determinism in the Diligence answer. Gap to revisit
+later: Diligence only covered internal traceability, not external disclosure (did the teams using this tool
+get told it was AI-assisted?).

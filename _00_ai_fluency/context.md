@@ -29,9 +29,9 @@ Description → Discernment → Diligence**, run in a loop, not a straight line.
 | # | Module | Time | Type |
 |---|--------|------|------|
 | 1 | Introduction to AI Fluency | 4 min | reading |
-| 2 | The AI Fluency Framework | 15 min | reading (2) |
+| 2 | The AI Fluency Framework | 15 min | reading (2) + **Exercise 1 (5 min, likely)** |
 | 3 | Deep Dive 1 — What is Generative AI | 13 min | reading (2) |
-| 4 | **Delegation** | 26 min | reading (2) + **hands-on** |
+| 4 | **Delegation** | 26 min | reading (2) + hands-on (unconfirmed) |
 | 5 | **Description** | 10 min | reading |
 | 6 | Deep Dive 2 — Effective Prompting Techniques | 10 min | reading |
 | 7 | **Discernment** | 5 min | reading |
@@ -74,11 +74,16 @@ Keep this matrix in your head — you'll use it in every exercise below.
 **Point:** reframes the course as being about *collaboration with AI*, not *tool mechanics*. No exercise —
 just sets the frame: you're building a working relationship/process, not memorizing prompts.
 
-### Module 2 — The AI Fluency Framework
+### Module 2 — The AI Fluency Framework ⭐ (Exercise 1 attaches here, not Module 4 — see note)
 **Point:** "Why fluency matters" + first look at the 4D × 3-mode framework (section 2 above).
 **Intuition to take away:** fluency is what lets you move *fluidly* between modes as a task evolves —
 starting augmented, escalating to agentic once you trust the pattern, dropping back to augmented the moment
 stakes rise.
+
+**📍 Placement note:** based on the user's own reported sequence (finished the "4D Framework" reading →
+went straight into Exercise 1), Exercise 1 lives right here, immediately after this module — not attached
+to Module 4 as originally guessed. Not 100% confirmed (no literal Skilljar screenshot of the nav), but
+strong circumstantial evidence. See Module 4 below for the exercise's actual (verified) text.
 
 ### Module 3 — Deep Dive 1: What is Generative AI
 **Point:** mental model of the underlying system — context windows, emergent capabilities, knowledge
@@ -91,23 +96,55 @@ this fact have changed since training?" for anything time-sensitive.
 
 ---
 
-### Module 4 — Delegation ⭐ (has the first hands-on exercise)
+### Module 4 — Delegation
 
-**Exercise (as described by the course):** *scope a real project of yours and create an executable
-delegation plan.*
+**⚠️ Correction:** this section used to claim Module 4 "has the first hands-on exercise" and described an
+invented "executable delegation plan" exercise (goal → decomposition → mode-per-subtask → checkpoints →
+fallback), built from a vague marketing-copy description before ever seeing the actual exercise text. Two
+things were wrong: the invented exercise structure, and the module it was attached to — Exercise 1 (below)
+almost certainly belongs to **Module 2** (see the placement note there), not here. Keeping the verified
+exercise text below for reference since it's already written up; Module 4 itself may or may not have its
+own separate hands-on activity — unconfirmed either way. Confirmed, verbatim, from the user pasting the
+actual Skilljar page:
 
-**What "executable" means in practice** — a delegation plan isn't a vibe, it's a document with these parts:
+> **Exercise 1: Apply the 4D's** — *Estimated time: 5 minutes*
+>
+> Pick one of these collaboration scenarios and consider how you might apply the 4D Framework:
+>
+> - **Communication project** — drafting a series of marketing-campaign emails with an AI assistant.
+> - **Research project** — using AI to analyze a large dataset for a research paper.
+> - **Creative project** — collaborating with AI on character concepts for a story.
+>
+> For your chosen scenario, answer one short question per D:
+> - **Delegation** — what would you handle yourself vs. collaborate on with AI?
+> - **Description** — how would you communicate your vision/context/success-criteria to the AI?
+> - **Discernment** — what criteria would you use to evaluate the AI's output?
+> - **Diligence** — what transparency/responsibility considerations matter here?
+
+That's it — a ~5 minute reflection exercise, one short answer per D, on **one** scenario (the three given,
+though nothing stops you from picking your own real project instead — see note below). It is *not* asking
+for a full project decomposition, mode-by-mode justification, checkpoints, or a fallback plan.
+
+**What to actually do with the deeper material below:** the goal/decomposition/mode/checkpoint/fallback
+structure, the worked competitive-analysis example, and the pitfall/intuition notes are still genuinely
+good *bonus* practice — a much more rigorous version of the same 4D thinking, useful for actually building
+delegation instinct rather than just passing the module. Just don't mistake it for what Exercise 1
+literally requires. If you already did the deep version on a real project (e.g. scoping an actual tool
+you're building), you've over-delivered relative to the exercise — answering the real Exercise 1's 4
+one-liners off the back of that work will now take you two minutes.
+
+<details>
+<summary>Bonus deep-practice version (optional, not the real exercise — click to expand)</summary>
+
+A fuller "executable delegation plan" you can build for real practice, beyond what Exercise 1 asks:
 
 1. **Goal / definition of done** — one sentence, plus what "done and good" looks like.
 2. **Decomposition** — break the project into subtasks. This is the single highest-leverage step; most bad
    delegation happens because people delegate a *vague whole* instead of *scoped parts*.
 3. **Mode per subtask** — for each subtask, pick Automation / Augmentation / Agency, and *justify it* against
-   stakes / reversibility / verifiability. This justification is what makes the plan "executable" rather
-   than aspirational.
-4. **Checkpoints** — where do you review before the next subtask starts? (This is where Discernment plugs
-   in — Delegation and Discernment are joined at the hip.)
-5. **Fallback** — what do you do if the AI output at a checkpoint is wrong? Redo with better Description?
-   Pull the subtask back to fully manual? Decide this *before* you start, not in the moment.
+   stakes / reversibility / verifiability.
+4. **Checkpoints** — where do you review before the next subtask starts?
+5. **Fallback** — what do you do if the AI output at a checkpoint is wrong?
 
 **Worked example** (use this as a template, don't copy it — swap in your own project):
 
@@ -121,13 +158,13 @@ delegation plan.*
 >   low-verifiability territory (opinion, not fact), so the checkpoint here is mandatory, not optional.
 > - Final sign-off / anything going to leadership → **stays human**, always. Not delegated at all.
 
-**Common pitfall:** delegating the *whole report* as one Agency task with no checkpoints. This is the
-"vague whole" failure mode — it feels efficient but you lose the ability to catch drift early, and by the
-time you review you're reviewing (and often redoing) the entire thing instead of one subtask.
+**Common pitfall:** delegating the *whole report* as one Agency task with no checkpoints — the "vague
+whole" failure mode. It feels efficient but you lose the ability to catch drift early.
 
 **Optimal-solution intuition:** good delegation plans look almost boringly modular — small subtasks, an
-explicit mode + reason for each, and checkpoints placed *before* irreversible or hard-to-verify steps, not
-after. If your plan doesn't name a mode + a reason per line item, it's not done yet.
+explicit mode + reason for each, and checkpoints placed *before* irreversible or hard-to-verify steps.
+
+</details>
 
 ---
 
@@ -175,7 +212,11 @@ next — a visible reasoning trace is what you actually evaluate; a bare answer 
   mode down from Agency to Augmentation for this subtask, looping back to Delegation.)
 
 ### Module 8 — The Description–Discernment Loop (hands-on)
-**Exercise:** apply iterative refinement to a multi-step project.
+**⚠️ Same caveat as Module 4:** the exercise description below is inferred from marketing copy, not
+confirmed against the live course text. Treat it as bonus-practice framing until verified — paste the real
+exercise text when you get there and I'll correct this the same way Module 4 got fixed.
+
+**Exercise (unverified):** apply iterative refinement to a multi-step project.
 **What the loop actually is:**
 
 ```
