@@ -45,3 +45,13 @@ flowchart LR
 flowchart LR
     A["Using the AI tools"] -->|"AI Fluency fills this gap"| B["Being Fluent &<br/>Knowing the AI"]
 ```
+
+## Interact With AI Systems
+
+You will follow either of the way listed below to interact with AI systems:
+
+1. *Automation* - You give prompts as input to AI and in return it does something and generates the result.
+
+2. *Augmentation* - You and AI work together to a get a task done. Example - Brainstorm to understand domain. Another can be to work together to build a tool.
+
+3. *Agency* - AI works as an independent unit without you and on your behalf.
