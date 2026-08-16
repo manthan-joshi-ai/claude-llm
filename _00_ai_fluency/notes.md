@@ -64,3 +64,11 @@ You will follow either of the way listed below to interact with AI systems:
     - You should know the *capacity* and *limitation* of the AI system
     - Decide what AI does well and what it cannot
     - Divide the tasks between *Yourself* and *AI*
+
+2. **Description**
+    - Communicating clearly with AI systems
+    - Prompts include: final output, structure of the output
+    - Role AI will play
+    - Approach AI needs to follow
+    - Try to provide *context* as much as possible
+    - Input examples
