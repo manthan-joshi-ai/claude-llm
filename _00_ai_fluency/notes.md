@@ -72,3 +72,14 @@ You will follow either of the way listed below to interact with AI systems:
     - Approach AI needs to follow
     - Try to provide *context* as much as possible
     - Input examples
+
+3. **Discernment**
+    - Evaluating AI outputs and behavior with a critical eye
+    - Check is the output useful and valid?
+    - Check is AI taking the right path or approach?
+
+4. **Diligence**
+    - Ensuring you interact with AI responsibly
+    - Measure accuracy of the output
+    - Take the ownership and responsibility of the AI work
+    - Ethical use and transparency
