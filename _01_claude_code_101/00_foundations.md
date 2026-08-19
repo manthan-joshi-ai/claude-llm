@@ -1,5 +1,8 @@
-# Claude Code 101
+# Foundations: Gen AI, AI Agents & Context
 ---
+
+Vocabulary and mental models that everything else in this module builds on —
+Gen AI / LLM / AI Agent / Agentic AI System, and what "context" means.
 
 ## Introduction: Gen AI vs AI Agent vs Agentic AI
 
@@ -269,8 +272,4 @@ flowchart TB
     class Web leaf
     class Sub leaf
 ```
-
-## Reference Links:
-
-- Skill Course: https://anthropic.skilljar.com/claude-code-101/469788
 
