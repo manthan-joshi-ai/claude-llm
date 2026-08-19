@@ -14,6 +14,7 @@ refresh a concept rather than scanning everything.
 | 02 | *(no notes file — pure setup, nothing conceptual to revisit)* | Installing Claude + first Claude prompt | 🟢 done |
 | 03 | [02_explore_plan_code_commit.md](02_explore_plan_code_commit.md) | Explore → Plan → Code → Commit workflow; same shape as the agent loop at task granularity | 🟢 done |
 | 04 | [03_context_management.md](03_context_management.md) | Context Management — `/context`, `/compact`, `/clear`, auto-compact, MCP vs Skills, sub-agent isolation | 🟢 done |
+| 05 | [04_claude_md.md](04_claude_md.md) | CLAUDE.md — persistent project/user memory, saves re-Exploring and removes guesswork, the levels, the `#` shortcut | 🟢 done |
 
 *(New rows get added here as each topic is started — files are only created
 when a topic is actually begun, not scaffolded ahead of time.)*
