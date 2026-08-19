@@ -119,3 +119,44 @@ flowchart TB
 invoke a workflow (fixed or dynamic). And a "worker" in that workflow can
 itself be a full agent running its own loop — not just a single LLM call.
 Nested, not either/or.
+
+## 5. Internal structure, end to end
+
+A simplified box view: prompt goes in, the Agentic Loop box is where all the
+work happens (Gather Context calling out to tools, then Act, then Verify,
+looping until the goal is met), and the result comes out.
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#8B5CF6", "primaryTextColor": "#ffffff", "primaryBorderColor": "#7C3AED", "lineColor": "#94A3B8", "fontFamily": "Segoe UI, sans-serif"}}}%%
+flowchart TB
+    Prompt(["👤 User Prompt"]) --> Loop
+
+    subgraph Loop["🔁 Agentic Loop"]
+        direction TB
+        GC(["📥 Gather Context"])
+        GC -. tool call .-> FS(["📁 File Search"])
+        GC -. tool call .-> WS(["🌐 Web Search"])
+        FS -.-> GC
+        WS -.-> GC
+        GC --> Act(["🛠️ Act / Action"])
+        Act --> Verify(["✅ Verify Results"])
+        Verify -->|not done, repeat| GC
+    end
+
+    Verify -->|goal achieved| Done(["🏁 Work Done"])
+
+    classDef prompt fill:#3B82F6,stroke:#2563EB,color:#ffffff
+    classDef ctx fill:#8B5CF6,stroke:#7C3AED,color:#ffffff
+    classDef tool fill:#F59E0B,stroke:#D97706,color:#ffffff
+    classDef act fill:#EC4899,stroke:#DB2777,color:#ffffff
+    classDef verify fill:#14B8A6,stroke:#0D9488,color:#ffffff
+    classDef done fill:#22C55E,stroke:#16A34A,color:#ffffff
+    class Prompt prompt
+    class GC ctx
+    class FS tool
+    class WS tool
+    class Act act
+    class Verify verify
+    class Done done
+    style Loop fill:#4C1D95,stroke:#7C3AED,color:#ffffff
+```
