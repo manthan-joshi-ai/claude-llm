@@ -13,7 +13,7 @@ refresh a concept rather than scanning everything.
 | 01 | [01_how_claude_code_works.md](01_how_claude_code_works.md) | The agent loop (specialized ReAct); Workflow vs Agent Loop; how orchestrator-workers nests inside the agent loop | 🟢 done |
 | 02 | *(no notes file — pure setup, nothing conceptual to revisit)* | Installing Claude + first Claude prompt | 🟢 done |
 | 03 | [02_explore_plan_code_commit.md](02_explore_plan_code_commit.md) | Explore → Plan → Code → Commit workflow; same shape as the agent loop at task granularity | 🟢 done |
-| 04 | *(not started)* | Context Management — `/compact`, `/clear`, `/context` | ⬜ not started |
+| 04 | [03_context_management.md](03_context_management.md) | Context Management — `/context`, `/compact`, `/clear`, auto-compact, MCP vs Skills, sub-agent isolation | 🟢 done |
 
 *(New rows get added here as each topic is started — files are only created
 when a topic is actually begun, not scaffolded ahead of time.)*
