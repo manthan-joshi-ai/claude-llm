@@ -11,6 +11,7 @@ refresh a concept rather than scanning everything.
 |---|---|---|---|
 | 00 | [00_foundations.md](00_foundations.md) | Gen AI vs LLM vs AI Agent vs Agentic AI System; Context & context window | 🟢 done |
 | 01 | [01_how_claude_code_works.md](01_how_claude_code_works.md) | The agent loop (specialized ReAct); Workflow vs Agent Loop; how orchestrator-workers nests inside the agent loop | 🟢 done |
+| 02 | *(no notes file — pure setup, nothing conceptual to revisit)* | Installing Claude + first Claude prompt | 🟢 done |
 
 *(New rows get added here as each topic is started — files are only created
 when a topic is actually begun, not scaffolded ahead of time.)*
