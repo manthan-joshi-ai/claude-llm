@@ -22,52 +22,43 @@ course material and not written up here until confirmed.)*
 
 ## The three tiers
 
-<div style="border-left: 6px solid #8B5CF6; background: rgba(139,92,246,0.08); padding: 12px 18px; border-radius: 6px; margin-bottom: 16px;">
+> [!IMPORTANT]
+> ### 🧠 Opus — deepest reasoning
+>
+> - Most intelligent model, highest cost, generally higher latency — the
+>   extra time is spent reasoning toward a better-quality answer.
+> - Can still return a quick response for genuinely simple tasks — latency
+>   scales with task complexity, not a fixed cost.
+> - **Use when:** complex, independent, long-running work — e.g.
+>   independent software development, tasks that need real reasoning
+>   depth.
 
-### 🧠 Opus — deepest reasoning
+> [!TIP]
+> ### ⚖️ Sonnet — the balanced default
+>
+> - Most widely used among developers — handles almost all practical,
+>   common tasks well.
+> - Moderate cost, moderate reasoning, faster than Opus.
+> - The right default for most use cases — good balance of outcome vs.
+>   cost/latency.
+> - **Use when:** code implementation from a spec/design doc, process
+>   automation, image analysis — the everyday workload.
 
-- Most intelligent model, highest cost, generally higher latency — the
-  extra time is spent reasoning toward a better-quality answer.
-- Can still return a quick response for genuinely simple tasks — latency
-  scales with task complexity, not a fixed cost.
-- **Use when:** complex, independent, long-running work — e.g.
-  independent software development, tasks that need real reasoning
-  depth.
-
-</div>
-
-<div style="border-left: 6px solid #22C55E; background: rgba(34,197,94,0.08); padding: 12px 18px; border-radius: 6px; margin-bottom: 16px;">
-
-### ⚖️ Sonnet — the balanced default
-
-- Most widely used among developers — handles almost all practical,
-  common tasks well.
-- Moderate cost, moderate reasoning, faster than Opus.
-- The right default for most use cases — good balance of outcome vs.
-  cost/latency.
-- **Use when:** code implementation from a spec/design doc, process
-  automation, image analysis — the everyday workload.
-
-</div>
-
-<div style="border-left: 6px solid #3B82F6; background: rgba(59,130,246,0.08); padding: 12px 18px; border-radius: 6px; margin-bottom: 16px;">
-
-### ⚡ Haiku — fastest, cheapest
-
-- Fastest latency, lowest cost.
-- **Does not support extended thinking** (no dedicated step-by-step
-  deliberation mode before answering) — per the course, this is why
-  it's described as having "no reasoning." Worth being precise about
-  what that actually means: it's still a capable LLM that follows
-  instructions and produces coherent, structured output — it just
-  lacks that one dedicated reasoning mechanism the other two tiers
-  have. Not "low quality" in general, just a lower ceiling for deep,
-  multi-step problems.
-- **Use when:** speed/cost matter most, or for simple tasks —
-  text/info retrieval, translation, and user-facing production apps
-  like chat support or a Q&A agent.
-
-</div>
+> [!NOTE]
+> ### ⚡ Haiku — fastest, cheapest
+>
+> - Fastest latency, lowest cost.
+> - **Does not support extended thinking** (no dedicated step-by-step
+>   deliberation mode before answering) — per the course, this is why
+>   it's described as having "no reasoning." Worth being precise about
+>   what that actually means: it's still a capable LLM that follows
+>   instructions and produces coherent, structured output — it just
+>   lacks that one dedicated reasoning mechanism the other two tiers
+>   have. Not "low quality" in general, just a lower ceiling for deep,
+>   multi-step problems.
+> - **Use when:** speed/cost matter most, or for simple tasks —
+>   text/info retrieval, translation, and user-facing production apps
+>   like chat support or a Q&A agent.
 
 ## Quick comparison
 
