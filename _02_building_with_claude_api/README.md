@@ -10,7 +10,7 @@ refresh a concept rather than scanning everything. Same pattern as
 |---|---|---|---|
 | 00 | [00_model_overview.md](00_model_overview.md) | Opus/Sonnet/Haiku tiers — reasoning depth, cost, latency trade-offs; model-tiered strategy example | 🟢 done |
 | 01 | [01_accessing_the_api.md](01_accessing_the_api.md) | The 5-stage request lifecycle; why the backend hop exists; request/response anatomy; inside the model — tokenize, embed, positional encoding, self-attention, generation/softmax/temperature | 🟢 done |
-| 02 | [02_multi_turn_conversations.md](02_multi_turn_conversations.md) | Why the API is stateless; client-side message history (user + assistant turns); growing context/cost tradeoff. Notebook: [notebooks/02_multi_turn_convo.ipynb](notebooks/02_multi_turn_convo.ipynb) | 🟢 done |
+| 02 | [02_multi_turn_conversations.md](02_multi_turn_conversations.md) | Why the API is stateless; client-side message history (user + assistant turns); growing context/cost tradeoff. Notebook: [notebooks/02_multi_turn_convo.ipynb](notebooks/02_multi_turn_convo.ipynb). Practice exercise: [notebooks/03_chat_exercise.ipynb](notebooks/03_chat_exercise.ipynb) — a working `input()`-driven chat loop; fixed a real bug extracting text from `response.content` (don't assume `content[0]` is always a text block) | 🟢 done |
 
 *(New rows get added here as each topic is started — files are only created
 when a topic is actually begun, not scaffolded ahead of time.)*
