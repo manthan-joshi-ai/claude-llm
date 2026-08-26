@@ -24,13 +24,6 @@ objects — both the **user's** messages *and* the **assistant's own past
 replies** — and sends the *entire* list with every new request. The
 model only "remembers" what's literally included in that list.
 
-> [!WARNING]
-> ### Easy mistake: forgetting to include the assistant's own replies
-> If the running history only appends the user's new questions and
-> skips adding the model's past responses back in, the model still
-> won't have coherent context — it won't even know what *it* said last
-> turn. "Chat history" means both sides, not just the user's half.
-
 ```mermaid
 %%{init: {"theme": "base", "themeVariables": {"primaryColor": "#8B5CF6", "primaryTextColor": "#ffffff", "primaryBorderColor": "#7C3AED", "lineColor": "#94A3B8", "fontFamily": "Segoe UI, sans-serif", "fontSize": "15px"}, "flowchart": {"htmlLabels": true, "padding": 22, "nodeSpacing": 35, "rankSpacing": 60}}}%%
 flowchart TB
