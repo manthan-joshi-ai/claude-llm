@@ -96,3 +96,50 @@ variety/novelty is actually the goal. Medium sits in between: enough
 structure to stay coherent and on-task, enough freedom to not sound
 robotic (e.g. summarizing without just parroting word-for-word, or
 creative writing that still respects given constraints).
+
+## A real-world wrinkle: temperature is being deprecated on newer models
+
+Discovered this hands-on while building the practice notebook, and it's
+worth knowing before picking a model to test temperature against.
+
+> [!WARNING]
+> ### Not every current model still accepts `temperature`
+> Per Anthropic's own docs and SDK release notes: on **Claude Opus
+> 4.7+, Sonnet 5, Fable, and Mythos**, `temperature` is deprecated —
+> only the default value is accepted, and a non-default value (even
+> something like `0.2`) gets the **entire request rejected with a 400
+> error**. These models replaced it with a different, unrelated
+> parameter: **`effort`** (`low`/`medium`/`high`/`xhigh`/`max`), which
+> controls *how much reasoning/exploration the model does before
+> answering* — not randomness. Temperature and effort are mutually
+> exclusive on a single request.
+>
+> **Claude Haiku 4.5 still supports classic numeric temperature
+> (0.0–1.0)** — it predates this generation's shift to `effort`. Use
+> Haiku 4.5 for temperature exercises going forward, e.g.
+> `claude-haiku-4-5-20251001`.
+
+**Separately, the SDK itself changed too:** `anthropic` v1.0+ removed
+`temperature` from `messages.create()`'s typed parameter list entirely
+(a client-side change, on top of the model-side deprecation above). The
+workaround, if staying on the latest SDK: route it through `extra_body`,
+which merges arbitrary keys into the raw request body, bypassing the
+client's type-checked signature:
+
+```python
+response = client.messages.create(
+    model="claude-haiku-4-5-20251001",
+    max_tokens=1024,
+    messages=messages,
+    extra_body={"temperature": temperature}   # instead of temperature=... directly
+)
+```
+
+**Effort vs. temperature, for clarity — two genuinely different axes:**
+
+| | Temperature | Effort |
+|---|---|---|
+| Controls | Randomness in **token sampling** (which token gets picked from the computed probabilities) | How much **reasoning/exploration** the model does before answering |
+| Same amount of "thinking"? | Yes — only the final pick changes | No — more effort means more computation spent |
+| Available on | Haiku 4.5 and earlier-generation models | Opus 4.7+, Sonnet 5, Fable, Mythos |
+| Values | Continuous, 0.0–1.0 | Discrete: low / medium / high / xhigh / max |
