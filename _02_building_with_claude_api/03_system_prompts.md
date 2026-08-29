@@ -27,12 +27,12 @@ a `role` the way user/assistant messages are.
 flowchart TB
     subgraph Plain["Plain request"]
         direction TB
-        P1(["messages: user 'Add 2 + 2'"])
+        P1(["messages: [user: 'Add 2 + 2']"])
     end
     subgraph Shaped["With a system prompt"]
         direction TB
         S1(["system: 'You are a concise,<br/>formal math tutor.'"])
-        S2(["messages: user 'Add 2 + 2'"])
+        S2(["messages: [user: 'Add 2 + 2']"])
         S1 -.applies to every turn.-> S2
     end
 
