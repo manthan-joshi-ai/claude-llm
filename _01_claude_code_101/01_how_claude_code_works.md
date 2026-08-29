@@ -82,7 +82,7 @@ loop internally to complete its piece.
 flowchart TB
     G(["📥 Gather context"]) --> R(["🤔 Reason"])
     R --> Decide{"🛠️ Act:<br/>needs delegation?"}
-    Decide -->|No, simple action| V(["✅ Verify"])
+    Decide -->|"No, simple action"| V(["✅ Verify"])
     Decide -->|Yes| Orch(["🧭 Orchestrator step<br/>decompose + dispatch"])
 
     subgraph Workers["Worker sub-agents — each runs its own agent loop"]
@@ -140,7 +140,7 @@ flowchart TB
         WS -.-> GC
         GC --> Act(["🛠️ Act / Action"])
         Act --> Verify(["✅ Verify Results"])
-        Verify -->|not done, repeat| GC
+        Verify -->|"not done, repeat"| GC
     end
 
     Verify -->|goal achieved| Done(["🏁 Work Done"])

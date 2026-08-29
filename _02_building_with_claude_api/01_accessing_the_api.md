@@ -218,7 +218,7 @@ help?"` exchange, end to end.
 
 ```mermaid
 %%{init: {"theme": "base", "themeVariables": {"primaryColor": "#8B5CF6", "primaryTextColor": "#ffffff", "primaryBorderColor": "#7C3AED", "lineColor": "#94A3B8", "fontFamily": "Segoe UI, sans-serif", "fontSize": "13px"}, "flowchart": {"htmlLabels": true, "padding": 18, "nodeSpacing": 25, "rankSpacing": 45}}}%%
-flowchart TB
+flowchart LR
     C1(["🧑 Client sends prompt"]) --> B1(["🖥️ Backend"])
     B1 --> A1(["🔐 + API key → Anthropic"])
 
