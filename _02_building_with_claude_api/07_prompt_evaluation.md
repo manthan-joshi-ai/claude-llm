@@ -22,7 +22,7 @@ What it does:
 - Compares different versions of the same prompt
 - Reviews outputs for errors
 
-**Together:** prompt engineering + prompt evaluation = *building
+> **Together:** prompt engineering + prompt evaluation = *building
 effective prompts, and testing how they perform.*
 
 ## What to do once a prompt is written
@@ -64,5 +64,5 @@ flowchart LR
 - Iterate with confidence, based on measurable improvements
 - Build more reliable AI applications
 
-**The goal:** catch problems during development — not after users
+> **The goal:** catch problems during development — not after users
 encounter them.
