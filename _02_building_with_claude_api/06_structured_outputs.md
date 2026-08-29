@@ -1,57 +1,91 @@
 # Structured Outputs
 ---
 
-## In my own words
+## The default problem
 
-This is a new feature that supports JSON-schema-based outputs, with a
-guarantee behind it. But for Python or other non-JSON structured
-outputs, we still need to go with the default system prompt technique
-— prefilling isn't a fallback here, since it's deprecated across the
-whole current model generation (Haiku 4.5 included), not just the
-newer ones.
-
-## The problem
-
-Applications often need the model's response in a specific machine-
-readable shape (JSON for a database record, a fixed set of fields for
-a form) — not free-form prose. Two ways to get there, with very
-different guarantees.
-
-## Two approaches
+Left alone, an LLM naturally responds in prose — sentences, paragraphs,
+markdown-ish lists. Fine for a chat, but a problem for a **coding
+agent** that needs *only* code: the model tends to wrap it in
+greetings, explanations, and follow-up suggestions.
 
 ```mermaid
 %%{init: {"theme": "base", "themeVariables": {"primaryColor": "#8B5CF6", "primaryTextColor": "#ffffff", "primaryBorderColor": "#7C3AED", "lineColor": "#94A3B8", "fontFamily": "Segoe UI, sans-serif", "fontSize": "14px"}, "flowchart": {"htmlLabels": true, "padding": 18, "nodeSpacing": 30, "rankSpacing": 50}}}%%
-flowchart TB
-    P(["🎯 Need structured output"]) --> Soft(["💬 System prompt + example<br/>'asking nicely'"])
-    P --> Hard(["🔒 output_config.format<br/>grammar-constrained sampling"])
-    Soft --> S1(["⚠️ Model CAN ignore it<br/>malformed JSON possible<br/>may need retries"])
-    Hard --> H1(["✅ Structurally impossible<br/>to violate the schema"])
+flowchart LR
+    Ask(["🧑 'Write a function<br/>to reverse a string'"]) --> Default(["💬 Default response"])
+    Default --> Greet(["👋 'Sure! Here's...'"])
+    Default --> Code(["💻 the actual code"])
+    Default --> Follow(["💡 'Let me know if...'"])
+    Ask -->|"what's actually wanted"| Wanted(["✅ Code only"])
 
-    classDef prob fill:#3B82F6,stroke:#2563EB,color:#ffffff
-    classDef soft fill:#F59E0B,stroke:#D97706,color:#ffffff
-    classDef hard fill:#8B5CF6,stroke:#7C3AED,color:#ffffff
-    classDef warn fill:#EF4444,stroke:#DC2626,color:#ffffff
-    classDef good fill:#22C55E,stroke:#16A34A,color:#ffffff
-    class P prob
-    class Soft soft
-    class Hard hard
-    class S1 warn
-    class H1 good
+    classDef ask fill:#3B82F6,stroke:#2563EB,color:#ffffff
+    classDef def fill:#8B5CF6,stroke:#7C3AED,color:#ffffff
+    classDef extra fill:#EF4444,stroke:#DC2626,color:#ffffff
+    classDef code fill:#F59E0B,stroke:#D97706,color:#ffffff
+    classDef want fill:#22C55E,stroke:#16A34A,color:#ffffff
+    class Ask ask
+    class Default def
+    class Greet extra
+    class Follow extra
+    class Code code
+    class Wanted want
 ```
 
-### 1. System prompt + example — "asking nicely"
+## Old fix (now deprecated): prefill + `stop_sequence`
 
-Instruct the model on the exact shape expected, with a worked example,
-in the system prompt (see [System Prompts](03_system_prompts.md)).
-Works on any model, but it's guidance, not enforcement — the model
-*can* ignore it, drop a field, or produce malformed JSON. `json.loads()`
-can fail.
+- **Prefill** — seed the assistant's turn with tokens already "said"
+  (e.g. an opening code fence), so the model continues straight into
+  code instead of starting with a greeting.
+- **`stop_sequence`** — tells the model where to stop (e.g. a closing
+  fence), cutting off any trailing explanation.
 
-### 2. `output_config.format` — the real "Structured Outputs" feature
+Together: clean, code-only output.
 
-A first-class API capability using **grammar-constrained sampling**:
-the API restricts which tokens the model can even generate next, based
-on a formal grammar derived from a JSON schema you provide.
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#8B5CF6", "primaryTextColor": "#ffffff", "primaryBorderColor": "#7C3AED", "lineColor": "#94A3B8", "fontFamily": "Segoe UI, sans-serif", "fontSize": "14px"}, "flowchart": {"htmlLabels": true, "padding": 18, "nodeSpacing": 30, "rankSpacing": 50}}}%%
+flowchart LR
+    U(["🧑 user: 'reverse a string'"]) --> A(["🤖 assistant prefill:<br/>opening code fence"])
+    A --> G(["🧠 model continues<br/>from that seed"])
+    G --> C(["💻 def reverse(s): ..."])
+    C --> S{"🛑 stop_sequence hit?<br/>e.g. closing code fence"}
+    S -->|"yes"| Done(["✅ clean code, nothing after"])
+
+    classDef user fill:#3B82F6,stroke:#2563EB,color:#ffffff
+    classDef seed fill:#8B5CF6,stroke:#7C3AED,color:#ffffff
+    classDef gen fill:#F59E0B,stroke:#D97706,color:#ffffff
+    classDef stop fill:#EC4899,stroke:#DB2777,color:#ffffff
+    classDef done fill:#22C55E,stroke:#16A34A,color:#ffffff
+    class U user
+    class A seed
+    class G gen
+    class C gen
+    class S stop
+    class Done done
+```
+
+> [!WARNING]
+> ### Deprecated — don't use on current models
+> Returns a 400 error across the **entire Claude 4.5/4.6+ generation,
+> Haiku 4.5 included** — only pre-4.5 models (Claude 3.5 series) still
+> support it. Its cutoff is wider than temperature's (which Haiku 4.5
+> still supports) — check each feature's own cutoff, don't assume
+> "drop to a smaller model" fixes a deprecated feature in general.
+
+## Modern fix #1: system prompt + example — works for *any* format
+
+Same technique as [System Prompts](03_system_prompts.md): a persistent
+instruction + a worked example shapes the output shape. Works for
+**any** target format — JSON, code, a custom layout — and on every
+current model. It's the correct current approach for non-JSON
+structured output, not a fallback.
+
+**The tradeoff:** it's *guidance*, not enforcement. The model can still
+ignore it, drop a field, or hand back something slightly off.
+
+## Modern fix #2: `output_config.format` — guaranteed, JSON only
+
+A first-class API feature using **grammar-constrained sampling**: the
+API restricts which tokens the model can even generate next, based on
+a schema you provide. Not prompting — an actual structural constraint.
 
 ```python
 response = client.messages.create(
@@ -77,8 +111,7 @@ response = client.messages.create(
 )
 ```
 
-**Bonus — typed helper via Pydantic**, avoids hand-writing raw JSON
-Schema:
+**Typed helper via Pydantic**, avoids hand-writing raw JSON Schema:
 ```python
 from pydantic import BaseModel
 
@@ -96,57 +129,26 @@ response = client.messages.parse(
 response.parsed_output   # a typed UserProfile instance, not a raw dict
 ```
 
-### The actual guarantee, side by side
-
 | | System prompt | `output_config.format` |
 |---|---|---|
-| Validation | None — Claude *can* ignore it | **Guaranteed**, via grammar-constrained sampling |
-| Malformed JSON | Possible | **Impossible** — always matches the schema |
+| Validation | None — Claude *can* ignore it | **Guaranteed**, grammar-constrained |
+| Malformed JSON | Possible | **Impossible** |
 | Required fields | Can be silently dropped | **Enforced** |
 | Retries for failures | Sometimes needed | **Never needed** |
+| Format | Any | **JSON only** |
 
 > [!IMPORTANT]
-> ### `output_config.format` is JSON-schema only
-> There's no equivalent format type for non-JSON structured output —
-> e.g. "guaranteed valid Python/Java code." The mechanism relies on
-> constraining against JSON's simple, well-defined grammar; a
-> programming language's grammar is far more complex, and "valid" for
-> code means more than syntax (it has to actually run correctly), so
-> there's no off-the-shelf equivalent guarantee.
->
-> Support in other SDKs (e.g. Java's `outputConfig(Class<T>)`) is about
-> **defining the schema conveniently** from a native class — the actual
-> output is still JSON either way, not generated Java code.
+> ### No equivalent guarantee exists for code
+> JSON has a simple, well-defined grammar — easy to constrain against.
+> A programming language's grammar is far more complex, and "valid"
+> for code means more than syntax (it has to actually run correctly).
+> If code correctness matters: wrap it in a JSON field (guarantees the
+> *wrapper* is valid JSON, not that the code inside compiles), or
+> validate it after generation — a linter, compiler, or sandboxed
+> execution. Same "layered defense" idea as guardrails: the model's
+> output isn't the last line of defense, a real check is.
 
-## Non-JSON structured output (e.g. code)
-
-No guaranteed mechanism exists — two practical options:
-
-1. **Wrap it in a JSON schema field** — e.g. `{"language": "python",
-   "code": "..."}`. Guarantees valid *JSON*; the `code` string itself
-   is unvalidated free text, no guarantee it's syntactically correct.
-2. **Validate after the fact** — run the generated code through an
-   actual linter/compiler/AST parser, or execute it in a sandbox. Same
-   "layered defense" idea as guardrails: the model's output isn't the
-   last line of defense, a real verification step is.
-
-**Bottom line: for non-JSON structured output, the system prompt +
-example technique is the correct current approach** — not a fallback.
-
-## A dead end worth knowing about: prefilling
-
-Older technique: seed the assistant's turn with a partial string (e.g.
-`"{"`) so the model continues from there, forcing it into a shape.
-**Deprecated** — returns a 400 error on current models.
-
-> [!WARNING]
-> ### Prefilling's cutoff is different from temperature's — and wider
-> Temperature is deprecated starting **Opus 4.7 / Sonnet 5** — Haiku
-> 4.5 still supports it. Prefilling is deprecated across the **entire
-> Claude 4.5/4.6+ generation, Haiku included** — only pre-4.5 models
-> (Claude 3.5 series) still support it. Don't assume "drop to Haiku"
-> fixes a deprecated-feature problem in general — check each feature's
-> own cutoff.
+## Feature support cutoffs — don't assume they line up
 
 | Feature | Still works on Haiku 4.5? | Deprecated starting |
 |---|---|---|
@@ -159,5 +161,5 @@ Older technique: seed the assistant's turn with a partial string (e.g.
 |---|---|
 | JSON, guaranteed valid | `output_config.format` (or `.parse()` + Pydantic/Zod) |
 | JSON, quick/model-agnostic, retries acceptable | System prompt + example |
-| Non-JSON (code, custom format) | System prompt + example, then validate the output separately |
-| ~~Prefilling~~ | Deprecated on all current models (4.5/4.6+) — don't use |
+| Non-JSON (code, custom format) | System prompt + example, then validate separately |
+| ~~Prefilling~~ | Deprecated everywhere current — don't use |
