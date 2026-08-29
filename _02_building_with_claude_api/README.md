@@ -14,6 +14,7 @@ refresh a concept rather than scanning everything. Same pattern as
 | 03 | [03_system_prompts.md](03_system_prompts.md) | The `system` parameter vs. `messages`; applies every turn; guardrails (soft, not hard-enforced) + defense layers; grounding vs. validating output (foreshadows RAG). Practice: [notebooks/03_system_prompts.ipynb](notebooks/03_system_prompts.ipynb) — Hindi-translation chat with a system prompt enforcing consistent output format across turns | 🟢 done |
 | 04 | [04_temperature.md](04_temperature.md) | Where temperature sits in the pipeline (sampling, after generation); logit/temperature/softmax mechanism; Anthropic's 0-1 range; practical low/medium/high use-case mapping | 🟢 done |
 | 05 | [05_streaming.md](05_streaming.md) | Why streaming improves UX; the message_start/content_block/message_delta/message_stop event sequence (verified against a real captured event); text_stream vs raw event iteration; live-text-then-clean-Markdown pattern. Notebook: [notebooks/05_streaming.ipynb](notebooks/05_streaming.ipynb) | 🟢 done |
+| 06 | [06_structured_outputs.md](06_structured_outputs.md) | System prompt vs. real `output_config.format` (grammar-constrained, guaranteed JSON); JSON-only limitation for non-JSON/code; prefilling deprecation (wider cutoff than temperature's, Haiku 4.5 included). Notebook: [notebooks/06_structured_outputs.ipynb](notebooks/06_structured_outputs.ipynb) | 🟢 done |
 
 *(New rows get added here as each topic is started — files are only created
 when a topic is actually begun, not scaffolded ahead of time.)*
