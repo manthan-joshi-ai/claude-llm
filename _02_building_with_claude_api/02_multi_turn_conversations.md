@@ -27,13 +27,13 @@ model only "remembers" what's literally included in that list.
 ```mermaid
 %%{init: {"theme": "base", "themeVariables": {"primaryColor": "#8B5CF6", "primaryTextColor": "#ffffff", "primaryBorderColor": "#7C3AED", "lineColor": "#94A3B8", "fontFamily": "Segoe UI, sans-serif", "fontSize": "15px"}, "flowchart": {"htmlLabels": true, "padding": 22, "nodeSpacing": 35, "rankSpacing": 60}}}%%
 flowchart TB
-    U1(["🧑 user: 'How do you say<br/>hello in Hindi?'"]) --> M1(["📋 messages = [user1]"])
-    M1 --> C1(["🧠 chat(messages)"])
+    U1(["🧑 user: 'How do you say<br/>hello in Hindi?'"]) --> M1(["📋 messages: user1"])
+    M1 --> C1(["🧠 chat messages"])
     C1 --> A1(["🤖 assistant: 'Namaste'"])
-    A1 --> M2(["📋 messages = [user1, assistant1]"])
+    A1 --> M2(["📋 messages: user1, assistant1"])
     M2 --> U2(["🧑 user: 'What about city?'"])
-    U2 --> M3(["📋 messages = [user1, assistant1, user2]"])
-    M3 --> C2(["🧠 chat(messages)"])
+    U2 --> M3(["📋 messages: user1, assistant1, user2"])
+    M3 --> C2(["🧠 chat messages"])
     C2 --> A2(["🤖 assistant: 'शहर (Shahar)'<br/>— correctly resolved 'city'<br/>using turn 1's context"])
 
     classDef user fill:#3B82F6,stroke:#2563EB,color:#ffffff

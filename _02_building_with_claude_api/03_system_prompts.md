@@ -27,12 +27,12 @@ a `role` the way user/assistant messages are.
 flowchart TB
     subgraph Plain["Plain request"]
         direction TB
-        P1(["messages: [user: 'Add 2 + 2']"])
+        P1(["messages: user 'Add 2 + 2'"])
     end
     subgraph Shaped["With a system prompt"]
         direction TB
         S1(["system: 'You are a concise,<br/>formal math tutor.'"])
-        S2(["messages: [user: 'Add 2 + 2']"])
+        S2(["messages: user 'Add 2 + 2'"])
         S1 -.applies to every turn.-> S2
     end
 
@@ -96,10 +96,10 @@ not just the system prompt alone:
 ```mermaid
 %%{init: {"theme": "base", "themeVariables": {"primaryColor": "#8B5CF6", "primaryTextColor": "#ffffff", "primaryBorderColor": "#7C3AED", "lineColor": "#94A3B8", "fontFamily": "Segoe UI, sans-serif", "fontSize": "15px"}, "flowchart": {"htmlLabels": true, "padding": 20, "nodeSpacing": 35, "rankSpacing": 60}}}%%
 flowchart TB
-    S(["1️⃣ System prompt<br/>behavioral guidance — cheap,<br/>not bulletproof"]) --> I(["2️⃣ Input validation<br/>sanitize/filter before<br/>it reaches the model"])
-    I --> G(["3️⃣ Generation<br/>the model responds"])
-    G --> O(["4️⃣ Output validation<br/>moderation, policy checks,<br/>PII scrubbing"])
-    O --> J(["5️⃣ Optional: a second model<br/>call as a 'judge' to verify"])
+    S(["① System prompt<br/>behavioral guidance — cheap,<br/>not bulletproof"]) --> I(["② Input validation<br/>sanitize/filter before<br/>it reaches the model"])
+    I --> G(["③ Generation<br/>the model responds"])
+    G --> O(["④ Output validation<br/>moderation, policy checks,<br/>PII scrubbing"])
+    O --> J(["⑤ Optional: a second model<br/>call as a 'judge' to verify"])
     J --> U(["✅ Reaches the user"])
 
     classDef sys fill:#8B5CF6,stroke:#7C3AED,color:#ffffff
