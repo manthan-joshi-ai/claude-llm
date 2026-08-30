@@ -56,6 +56,13 @@ Claude-generated; from a handful to thousands of rows.
 > - `"How do I make oatmeal?"` 🥣
 > - `"How far away is the Moon?"` 🌕
 
+### 🏗️ Two ways to actually build the dataset
+
+| Method | What it means | Tradeoff |
+|---|---|---|
+| 🧑 Human-written | Someone hand-writes each test case | Careful and realistic, but slow and tedious — doesn't scale |
+| 🤖 Model-generated | A fast model (e.g. Haiku) generates the test cases for you | Quick, scales easily — exactly the approach used in [08_prompt_evals_exercise.ipynb](notebooks/08_prompt_evals_exercise.ipynb)'s `generate_dataset()` |
+
 ## 🚀 Step ③: Feed to Claude
 
 Merge each dataset row into the prompt template, send it, capture the
@@ -88,6 +95,14 @@ grader — something that scores the answer's quality, typically **1–10**
 > compares against, instead of judging from scratch every time.
 > Sometimes it's a strict exact-match, sometimes just a calibration
 > example. More on this later in the course.
+
+### ⚖️ Three types of graders
+
+| Grader | How it works | Good for | Tradeoff |
+|---|---|---|---|
+| 🖥️ **Code Grader** | Code/functions check the output directly | Syntax correctness, does it parse (JSON/XML), length limits, disallowed words | Fast and deterministic, but rigid — only catches what you explicitly coded a check for |
+| 🧠 **Model Grader** | Another model evaluates the output, acting as a judge | Is it *helpful*, does it hold up under tricky/breaking scenarios — dynamic, not just rule-checking | This is exactly what [`grade_by_model()`](notebooks/08_prompt_evals_exercise.ipynb) does in the exercise notebook |
+| 🧑 **Human Grader** | A person reviews the output | The real gold standard for nuance and correctness | Time-consuming and tedious — doesn't scale |
 
 ## 🔧 Step ⑤: Update the Prompt and Iterate
 
