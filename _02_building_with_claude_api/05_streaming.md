@@ -13,6 +13,17 @@ generated so far — as it's produced, instead of waiting for the whole
 thing. Same total generation time under the hood; the UX just stops
 feeling dead.
 
+> [!TIP]
+> ### 📺 Real-world analogy
+> ![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white) ![Netflix](https://img.shields.io/badge/Netflix-E50914?style=flat-square&logo=netflix&logoColor=white)
+>
+> Video streaming apps don't make you download the entire video before
+> playback starts — they send it as small chunks (segments) delivered
+> progressively, so you're watching before the whole file has arrived.
+> Same core principle as LLM streaming: **don't make the consumer wait
+> for the entire payload before showing anything** — just applied to
+> generated text instead of video data.
+
 ## The event sequence
 
 ```mermaid
