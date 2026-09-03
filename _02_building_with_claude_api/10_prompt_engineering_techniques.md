@@ -171,5 +171,49 @@ flowchart LR
 
 ---
 
+## 📦 4. Providing Examples
+
+**Main motivation:** give the LLM an idea of what an ideal output
+*looks like*, instead of just describing it. To improve results, or
+for complex problems, it's useful to provide example input/output
+pairs.
+
+- 1️⃣ **One-shot prompting** — a single example of the input/output pair
+- 🔢 **Few-shot / multi-shot prompting** — multiple examples, used to
+  cover corner cases
+
+This is something I already tried, without naming it, in the Hindi
+translation exercise — a real one-shot example straight from my own
+system prompt in [03_system_prompts.ipynb](notebooks/03_system_prompts.ipynb):
+
+```
+Example:
+What is hello in hind? Here user is expecting a response like below
+Hello - नमस्ते/नमस्कार
+```
+
+One example was enough there to lock in the output *format* (word —
+translation) that carried consistently across every turn of the
+conversation, including turns translating full sentences instead of
+single words.
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#8B5CF6", "primaryTextColor": "#ffffff", "primaryBorderColor": "#7C3AED", "lineColor": "#94A3B8", "fontFamily": "Segoe UI, sans-serif", "fontSize": "15px"}, "flowchart": {"htmlLabels": true, "padding": 20, "nodeSpacing": 35, "rankSpacing": 55}}}%%
+flowchart LR
+    D([" 📝 Describing the output in words "]) --> E([" 📦 Showing an example instead "])
+    E --> O1([" 1️⃣ One-shot — straightforward pattern "])
+    E --> O2([" 🔢 Few-shot — corner cases, varied valid answers "])
+
+    classDef bad fill:#EF4444,stroke:#DC2626,color:#ffffff
+    classDef step fill:#8B5CF6,stroke:#7C3AED,color:#ffffff
+    classDef good fill:#22C55E,stroke:#16A34A,color:#ffffff
+    class D bad
+    class E step
+    class O1 good
+    class O2 good
+```
+
+---
+
 *(New techniques get appended here as we cover them — one page, easy to
 scan and compare across techniques.)*

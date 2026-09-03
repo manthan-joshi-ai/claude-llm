@@ -18,7 +18,7 @@ Course: Anthropic Academy, "Building with the Claude API." 9 modules, 67 lessons
 |---|---|---|---|
 | 1. Accessing Claude with the API | 9 | 🟢 done | [00](00_model_overview.md)–[06](06_structured_outputs.md) |
 | 2. Prompt Evaluation | 7 | 🟢 done | [07](07_prompt_evaluation.md), [08](08_prompt_evals_workflow.md) |
-| 3. Prompt Engineering Techniques | 6 | 🟡 in progress (3/5 techniques) | [09](09_prompt_engineering.md) (cycle), [10](10_prompt_engineering_techniques.md) (all techniques, one page) |
+| 3. Prompt Engineering Techniques | 6 | 🟢 done (4/4 techniques + quiz pending) | [09](09_prompt_engineering.md) (cycle), [10](10_prompt_engineering_techniques.md) (all techniques, one page) |
 | 4. Tool Use with Claude | 13 | ⚪ not started | — |
 | 5. RAG and Agentic Search | 7 | ⚪ not started | — |
 | 6. Features of Claude | 9 | ⚪ not started | — |
@@ -56,9 +56,9 @@ with XML tags → providing examples.
 
 Progress: the cycle itself is in [09](09_prompt_engineering.md); techniques live together
 in [10_prompt_engineering_techniques.md](10_prompt_engineering_techniques.md) — one page
-per technique, easier to scan/compare than separate files. Three logged so far: Simple +
-Direct, Be Specific, Use Delimiters. One technique remains: **providing examples
-(few-shot)**.
+per technique, easier to scan/compare than separate files. All four techniques logged:
+Simple + Direct, Be Specific, Use Delimiters, Providing Examples. Only the module quiz is
+left before moving to Module 4 (Tool Use with Claude).
 
 ## Module 4 — Tool Use with Claude
 
