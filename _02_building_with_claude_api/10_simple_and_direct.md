@@ -72,12 +72,8 @@ flowchart LR
 ## 📈 Proof it moves the needle
 
 Straight from the course itself: applying these five moves to a meal-
-planning prompt took its evaluation score from **2.32 → 3.92** (same
+planning prompt took its evaluation score from **3.89 → 6.89** (same
 1–10 scale from [Prompt Evals Workflow](08_prompt_evals_workflow.md)).
 
 Same story as your own Hindi-translation exercise — this isn't a vibe,
 it's a **measured** improvement. 📊
-
-> [!NOTE]
-> ### 📚 Source
-> [Being clear and direct — Claude Academy](https://academy.claude.com/courses/building-with-the-claude-api/being-clear-and-direct)
